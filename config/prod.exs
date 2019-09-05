@@ -15,3 +15,7 @@ config :echo_server, EchoServerWeb.Endpoint,
 
 # Do not print debug messages in production
 config :logger, level: :info
+
+config :echo_server, EchoServerWeb.Endpoint,
+  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
+  server: true
