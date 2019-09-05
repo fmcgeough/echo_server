@@ -16,7 +16,8 @@ defmodule EchoServerWeb.Router do
 
   scope "/", EchoServerWeb do
     pipe_through :browser
-    live "/", EchoLive
+    get "/", PageController, :index
+    live "/status", EchoLive
   end
 
   # Other scopes may use custom stacks.

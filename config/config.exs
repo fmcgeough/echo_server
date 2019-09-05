@@ -7,6 +7,10 @@
 # General application configuration
 use Mix.Config
 
+# General application configuration
+config :echo_server,
+  ecto_repos: [EchoServer.Repo]
+
 # Configures the endpoint
 config :echo_server, EchoServerWeb.Endpoint,
   url: [host: "localhost"],

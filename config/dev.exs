@@ -65,3 +65,12 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+# Configure your database
+config :echo_server, EchoServer.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "postgres",
+  password: "postgres",
+  database: "echo_server_dev",
+  hostname: "localhost",
+  pool_size: 10

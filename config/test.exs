@@ -8,3 +8,11 @@ config :echo_server, EchoServerWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :echo_server, EchoServer.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "postgres",
+  password: "postgres",
+  database: "echo_server_test",
+  hostname: "localhost",
+  pool: Ecto.Adapters.SQL.Sandbox

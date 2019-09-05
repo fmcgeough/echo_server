@@ -6,12 +6,15 @@ defmodule EchoServer.Application do
   use Application
 
   def start(_type, _args) do
+    import Supervisor.Spec
+
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
-      EchoServerWeb.Endpoint,
-      EchoServer.EchoParams,
-      EchoServer.EchoOps
+      supervisor(EchoServer.Repo, []),
+      supervisor(EchoServerWeb.Endpoint, []),
+      supervisor(EchoServer.EchoParams, []),
+      supervisor(EchoServer.EchoOps, [])
       # Starts a worker by calling: EchoServer.Worker.start_link(arg)
       # {EchoServer.Worker, arg},
     ]

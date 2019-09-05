@@ -3,7 +3,7 @@ defmodule EchoServer.EchoParams do
 
   @allowed_statuses [200, 201, 204, 404, 500]
 
-  def start_link(_opts) do
+  def start_link do
     GenServer.start_link(__MODULE__, %{status: 201, delay: 0, random: false}, name: __MODULE__)
   end
 
