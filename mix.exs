@@ -39,8 +39,7 @@ defmodule EchoServer.MixProject do
       {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"},
-      {:timex, "~> 3.6"}
+      {:plug_cowboy, "~> 2.0"}
     ]
   end
 end
