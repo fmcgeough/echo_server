@@ -1,7 +1,7 @@
 defmodule EchoServerWeb.CallbackController do
   use EchoServerWeb, :controller
   require Logger
-  alias EchoServer.EchoParams
+  alias EchoServer.{EchoOp, EchoOps, EchoParams}
 
   def create(conn, params) do
     conn
@@ -16,11 +16,12 @@ defmodule EchoServerWeb.CallbackController do
 
   defp handle_request(conn, caller_params) do
     params = EchoParams.params()
+    status = return_status(params)
 
     conn
-    |> output_info(caller_params)
+    |> add_to_ops(caller_params, status)
     |> delay(params)
-    |> set_return_status(params)
+    |> put_status(status)
   end
 
   defp delay(conn, %{delay: 0}), do: conn
@@ -30,17 +31,16 @@ defmodule EchoServerWeb.CallbackController do
     conn
   end
 
-  defp set_return_status(conn, %{random: true}) do
-    put_status(conn, Enum.random([200, 201, 204, 404, 500]))
+  defp return_status(%{random: true}) do
+    Enum.random([200, 201, 204, 404, 500])
   end
 
-  defp set_return_status(conn, %{status: status, random: false}) do
-    put_status(conn, status)
+  defp return_status(%{status: status, random: false}) do
+    status
   end
 
-  defp output_info(conn, params) do
-    Logger.info("Caller sent => #{inspect(params)}")
-    Logger.info("Headers => #{inspect(conn.req_headers)}")
+  defp add_to_ops(conn, params, status) do
+    EchoOps.add_op(EchoOp.new(params, status))
     conn
   end
 end

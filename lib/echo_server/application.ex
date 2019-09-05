@@ -10,7 +10,8 @@ defmodule EchoServer.Application do
     children = [
       # Start the endpoint when the application starts
       EchoServerWeb.Endpoint,
-      EchoServer.EchoParams
+      EchoServer.EchoParams,
+      EchoServer.EchoOps
       # Starts a worker by calling: EchoServer.Worker.start_link(arg)
       # {EchoServer.Worker, arg},
     ]

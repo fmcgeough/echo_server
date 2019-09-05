@@ -1,1 +1,26 @@
-test
+<h2>Recent Callbacks</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time Received</th>
+      <th>Response Sent</th>
+      <th>JSON </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= if @recent_ops == [] do %>
+      <tr class="rows">
+        <td>No recent callbacks found.</td>
+      </tr>
+    <% else %>
+      <%= for op <- @recent_ops do %>
+        <tr>
+          <td> <%= op.time_received %></td>
+          <td> <%= op.response_sent %></td>
+          <td> <%= op.json %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
