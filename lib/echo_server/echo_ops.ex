@@ -1,4 +1,7 @@
 defmodule EchoServer.EchoOps do
+  @moduledoc """
+  Holds recent operations and used to populate UI
+  """
   use GenServer
   alias EchoServer.EchoOp
 
@@ -25,7 +28,7 @@ defmodule EchoServer.EchoOps do
   def handle_cast({:add_op, op}, state) do
     state =
       state
-      |> Enum.slice(0, 9)
+      |> Enum.slice(0, 19)
       |> Enum.concat([op])
 
     {:noreply, state}

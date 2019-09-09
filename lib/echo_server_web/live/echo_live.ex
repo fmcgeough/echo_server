@@ -1,8 +1,11 @@
 defmodule EchoServerWeb.EchoLive do
+  @moduledoc """
+  Let user see recent ops against server
+  """
   use Phoenix.LiveView
   use Phoenix.HTML
-  alias EchoServerWeb.EchoLiveView
   alias EchoServer.EchoOps
+  alias EchoServerWeb.EchoLiveView
 
   def render(assigns) do
     EchoLiveView.render("index.html", assigns)

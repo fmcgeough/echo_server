@@ -1,4 +1,7 @@
 defmodule EchoServer.EchoParams do
+  @moduledoc """
+  Holds global params that can be overridden by args in caller's URL
+  """
   use GenServer
 
   @allowed_statuses [200, 201, 204, 404, 500]

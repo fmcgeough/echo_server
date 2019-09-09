@@ -3,9 +3,12 @@
 <table>
   <thead>
     <tr>
+      <th>Caller Id</th>
       <th>Time Received</th>
-      <th>Response Sent</th>
-      <th>JSON </th>
+      <th>Response</th>
+      <th>Delay (secs)</th>
+      <th>JSON MD5</th>
+      <th>JSON Key</th>
     </tr>
   </thead>
   <tbody>
@@ -16,9 +19,12 @@
     <% else %>
       <%= for op <- @recent_ops do %>
         <tr>
+          <td> <%= op.id %></td>
           <td> <%= op.time_received %></td>
           <td> <%= op.response_sent %></td>
-          <td> <%= op.json %></td>
+          <td> <%= op.delay %></td>
+          <td> <%= op.json_md5 %></td>
+          <td> <%= op.json_key %></td>
         </tr>
       <% end %>
     <% end %>
