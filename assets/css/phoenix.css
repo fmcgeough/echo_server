@@ -18,7 +18,7 @@ html {
 body {
   color: #000000;
   font-family: "Helvetica", "Arial", sans-serif;
-  font-size: 1.6em;
+  font-size: 1.5em;
   font-weight: 300;
   line-height: 1.6;
 }
@@ -549,7 +549,7 @@ h6 {
 
 .container {
   margin: 0 auto;
-  max-width: 110rem;
+  max-width: 130rem;
   padding: 0 2rem;
   position: relative;
   width: 100%;
