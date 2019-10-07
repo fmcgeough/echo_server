@@ -16,7 +16,7 @@ defmodule EchoServer.EchoOp do
       response_sent: response_sent,
       time_received: DateTime.utc_now(),
       delay: delay,
-      json_key: json_key
+      json_key: json_key(json_key)
     }
   end
 
@@ -24,5 +24,13 @@ defmodule EchoServer.EchoOp do
     EchoServer.EchoID.generate()
   end
 
-  defp echo_id(id), do: id
+  defp echo_id(id) do
+    String.slice(id, 0, 64)
+  end
+
+  defp json_key(nil), do: nil
+
+  defp json_key(key) do
+    String.slice(key, 0, 64)
+  end
 end
