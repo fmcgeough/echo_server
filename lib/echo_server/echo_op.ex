@@ -12,7 +12,7 @@ defmodule EchoServer.EchoOp do
   def new(id, json, response_sent, delay, json_key) do
     %__MODULE__{
       id: echo_id(id),
-      json_md5: :crypto.hash(:md5, "#{inspect(json)}") |> Base.encode16(),
+      json_md5: jason_md5(json),
       response_sent: response_sent,
       time_received: DateTime.utc_now(),
       delay: delay,
@@ -32,5 +32,13 @@ defmodule EchoServer.EchoOp do
 
   defp json_key(key) do
     String.slice(key, 0, 64)
+  end
+
+  defp jason_md5(nil), do: ""
+
+  defp jason_md5(json) do
+    :crypto.hash(:md5, "#{inspect(json)}") |> Base.encode16()
+  rescue
+    _err -> ""
   end
 end
