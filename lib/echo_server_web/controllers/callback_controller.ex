@@ -6,6 +6,8 @@ defmodule EchoServerWeb.CallbackController do
   @allowed_statuses [200, 201, 204, 404, 500]
 
   def create(%{body_params: json_data, query_params: params} = conn, _params) do
+    Logger.warn("Create called")
+
     conn
     |> handle_request(json_data, params)
     |> json(%{})
