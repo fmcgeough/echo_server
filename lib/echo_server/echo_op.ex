@@ -16,7 +16,7 @@ defmodule EchoServer.EchoOp do
       response_sent: response_sent,
       time_received: DateTime.utc_now(),
       delay: delay,
-      json_key: json_key(json_key)
+      json_key: json_key("#{inspect(json_key)}")
     }
   end
 
@@ -38,7 +38,5 @@ defmodule EchoServer.EchoOp do
 
   defp jason_md5(json) do
     :crypto.hash(:md5, "#{inspect(json)}") |> Base.encode16()
-  rescue
-    _err -> ""
   end
 end
