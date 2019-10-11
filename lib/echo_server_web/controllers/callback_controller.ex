@@ -47,7 +47,10 @@ defmodule EchoServerWeb.CallbackController do
     response = response(global_params.status, caller_int_param(caller_params["response"]))
     Logger.info("id = #{inspect(id)}, delay =#{inspect(delay)}, response = #{inspect(response)} ")
     json_key = json_key(json_data, caller_params["key"])
-    EchoOp.new(id, json_data, response, delay, json_key)
+    Logger.info("json key = #{inspect(json_key)}")
+    op = EchoOp.new(id, json_data, response, delay, json_key)
+    Logger.info("Got past EchoOp.new")
+    op
   end
 
   defp delay(global_delay, nil), do: global_delay
